@@ -9,7 +9,7 @@ pool:
   vmImage: 'vs2017-win2016'
   
 variables:
-- group: terra_vars   
+- group: terra_vars
 
 steps:
 - task: charleszipp.azure-pipelines-tasks-terraform.azure-pipelines-tasks-terraform-installer.TerraformInstaller@0

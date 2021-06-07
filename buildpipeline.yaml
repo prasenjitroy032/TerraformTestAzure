@@ -1,5 +1,9 @@
+trigger:
+- master
 pool:
   name: Default
+variables:
+- group: terra_vars    
 steps:
 - task: ms-devlabs.custom-terraform-tasks.custom-terraform-installer-task.TerraformInstaller@0
   displayName: 'Use Terraform Latest'

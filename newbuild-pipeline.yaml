@@ -5,8 +5,7 @@ trigger:
 jobs:
 - job: Job_1
   displayName: Agent job 1
-  pool:
-    vmImage: ubuntu-18.04
+  pool: Default
   variables:
   - group: terra_vars   
   steps:

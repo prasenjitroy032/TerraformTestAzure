@@ -1,0 +1,33 @@
+trigger:
+  branches:
+    include:
+    - master
+jobs:
+- job: Job_1
+  displayName: Agent job 1
+  pool: Default
+  variables:
+  - group: terra_vars   
+  steps:
+  - task: TerraformInstaller@0
+    displayName: Use Terraform Latest
+    inputs:
+      terraformVersion: latest
+  - task: TerraformTaskV1@0
+    displayName: 'Terraform : INIT'
+    inputs:
+      backendServiceArm: PR-TFSPN
+      backendAzureRmResourceGroupName: pr-infra
+      backendAzureRmStorageAccountName: prtstate
+      backendAzureRmContainerName: tstate
+      backendAzureRmKey: $(tstateaccess)
+  - task: TerraformTaskV1@0
+    displayName: 'Terraform : PLAN'
+    inputs:
+      command: plan
+      environmentServiceNameAzureRM: PR-TFSPN
+  - task: TerraformTaskV1@0
+    displayName: 'Terraform : VALIDATE & APPLY'
+    inputs:
+      command: apply
+      environmentServiceNameAzureRM: PR-TFSPN

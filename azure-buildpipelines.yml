@@ -12,7 +12,7 @@ jobs:
   - task: TerraformInstaller@0
     displayName: Use Terraform Latest
     inputs:
-      terraformVersion: latest
+      terraformVersion: v0.14.11
   - task: TerraformTaskV1@0
     displayName: 'Terraform : INIT'
     inputs:
